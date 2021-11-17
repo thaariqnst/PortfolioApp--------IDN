@@ -54,4 +54,41 @@ object portofolioData {
             }
             return list
         }
+
+    private val titleExperience :Array<String> = arrayOf(
+        "Android Associated Developer",
+        "Android Pemula",
+        "Memulai Program Bahasa Kotlin",
+        "Memulai Bahasa Program Python",
+        "Solid Principle"
+    )
+
+    private val detailExperience :Array<String> = arrayOf(
+        "Sertifikat ini merupakan sertifikat yang diterbitkan Langsung oleh Google untuk developer Android",
+        "Android pemula merupakan course yang diadakan oleh dicoding untuk memulai belajar program android",
+        "memulai program bahasa kotlin merupakan course yang bertujuan untuk mempelajari bahas kotlin",
+        "memulai program bahasa kotlin merupakan course yang bertujuan untuk mempelajari bahas python",
+        "solid principle mempeljari tentang oop, clean code, dll"
+    )
+
+    private val imageExperience = intArrayOf(
+        R.drawable.aad,
+        R.drawable.androidcert,
+        R.drawable.kotlincert,
+        R.drawable.pythoncert,
+        R.drawable.solidcert
+    )
+
+    val listDataExperience: ArrayList<Portofolio>
+        get() {
+            val list = arrayListOf<Portofolio>()
+            for (position in titleExperience.indices){
+                val experience = Portofolio()
+                experience.title = titleExperience[position]
+                experience.detail = detailExperience[position]
+                experience.image = imageExperience[position]
+                list.add(experience)
+            }
+            return list
+        }
 }

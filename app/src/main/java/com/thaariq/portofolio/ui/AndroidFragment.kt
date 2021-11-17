@@ -38,6 +38,12 @@ class AndroidFragment : Fragment() {
 
         val androidAdapter = RVAndroidAdapter()
         androidAdapter.setData(portofolioData.listAppAndroid)
+
+        androidAdapter.OnItemClicked= { selectedData ->
+            CustomTabsIntent.Builder().build()
+                .launchUrl(requireContext(), Uri.parse(selectedData.link))
+        }
+
         with(binding.rvAndroid){
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)

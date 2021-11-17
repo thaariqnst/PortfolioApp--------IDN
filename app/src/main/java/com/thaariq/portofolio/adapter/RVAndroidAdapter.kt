@@ -8,12 +8,12 @@ import com.thaariq.portofolio.R
 import com.thaariq.portofolio.data.Portofolio
 import com.thaariq.portofolio.databinding.ItemAndroidBinding
 
-class RVAndroidAdapter : RecyclerView.Adapter<AndroidViewHolder>() {
+class RVAndroidAdapter : RecyclerView.Adapter<RVAndroidAdapter.AndroidViewHolder>() {
 
     private val listData = ArrayList<Portofolio>()
-    
+    var OnItemClicked: ((Portofolio) -> Unit)? = null
 
-    fun setData(newList: List<Portofolio>){
+    fun setData(newList: List<Portofolio>) {
         if (newList == null) return
         listData.clear()
         listData.addAll(newList)
@@ -34,14 +34,21 @@ class RVAndroidAdapter : RecyclerView.Adapter<AndroidViewHolder>() {
     override fun getItemCount(): Int {
         return listData.size
     }
-}
 
-class AndroidViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-    private val binding = ItemAndroidBinding.bind(itemView)
 
-    fun bind(data : Portofolio){
-        binding.android = data
-        binding.executePendingBindings()
+    inner class AndroidViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val binding = ItemAndroidBinding.bind(itemView)
+
+        fun bind(data: Portofolio) {
+            binding.android = data
+            binding.executePendingBindings()
+        }
+
+        init {
+            binding.root.setOnClickListener {
+                OnItemClicked?.invoke(listData[adapterPosition])
+            }
+        }
+
     }
-
 }
