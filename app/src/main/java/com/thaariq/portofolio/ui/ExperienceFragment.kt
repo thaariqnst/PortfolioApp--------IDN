@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.thaariq.portofolio.R
@@ -29,6 +30,14 @@ class ExperienceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapterExperience = RVExperienceAdapter()
+
+        adapterExperience.onItemClicked = { experience ->
+            findNavController().navigate(
+                ExperienceFragmentDirections.actionExperienceFragmentToExperienceDetailFragment(
+                    experience
+                )
+            )
+        }
         adapterExperience.setData(portofolioData.listDataExperience)
 
         with(binding.rvExperience){

@@ -8,4 +8,7 @@
         maximus vitae lectus. Duis id imperdiet nisi. Aliquam vel tortor ultrices, tempus quam sit amet, ullamcorper enim.</string>
     <string name="app_android_btn">%s App Android</string>
     <string name="documentation_link">Documentation Link</string>
+    <string name="Flutter">Hello Flutter Fragment</string>
+    <string name="Setting">Hello Settings Fragment</string>
+    <string name="UIUX">Hello UI UX Fragment</string>
 </resources>
